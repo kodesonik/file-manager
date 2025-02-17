@@ -20,7 +20,7 @@ class FileController extends Controller
     protected function getUploadPath($project, $path, $inputName)
     {
         $parts = array_filter([
-            $project->name,
+            $project->folder,
             $path ? trim($path, '/') :  $inputName
         ]);
 
@@ -50,7 +50,7 @@ class FileController extends Controller
         }
 
         // Compress the image with 80% quality
-        $fullPath = Storage::disk('public')->path($uploadPath . '/' . $fileName);
+        $fullPath = public_path('storage/' . $uploadPath . '/' . $fileName);
         $image->save($fullPath, 80);
 
         return $uploadPath . '/' . $fileName;

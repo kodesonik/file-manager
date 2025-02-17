@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('folder')->unique();
             $table->text('description')->nullable();
             $table->string('api_key', 32)->unique();
             $table->timestamps();
